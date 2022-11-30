@@ -1,16 +1,13 @@
-# This is a sample Python script.
+import  urllib.request
+from bs4 import BeautifulSoup
+import re
+file_name = "demostenes-wybor-mow"
+text = urllib.request.urlopen("https://wolnelektury.pl/media/book/txt/"+file_name+".txt")
+txt_str = BeautifulSoup(text)
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+file_to_save =open("../Corpuses/corpus_a/corpus/"+file_name+".txt", "w")
 
+print(txt_str)
+#file_to_save.write(txt_str.prettify())
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+#file_to_save.write(str(txt_str.html.encode('utf8')))
