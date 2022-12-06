@@ -37,3 +37,9 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+# python
+__pycache__/
+
+# corpora
+corpora/
