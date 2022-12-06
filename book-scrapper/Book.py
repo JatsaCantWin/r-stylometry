@@ -4,6 +4,21 @@ class Book:
         self.title = title
         self.content = content
     def saveToFile(self, directoryPath):
-        file = open("./"+directoryPath+"/"+self.author + "|" + self.title, "w")
+        self.normalizeAuthorAndTitleForWindows()
+        file = open("./"+directoryPath+"/"+self.author + "␞" + self.title, "w")
         file.write(self.content)
         file.close()
+    def normalizeAuthorAndTitleForWindows(self):
+        ReplaceChars = {
+            "\"" : "''",
+            "<" : "ᐸ",
+            ">" : "ᐳ",
+            ":" : "ː",
+            "/" : "᜵",
+            "\\" : "∖",
+            "|" : "∣",
+            "*" : "∗"
+        }
+        for key in ReplaceChars:
+            self.author.replace(key, ReplaceChars[key])
+            self.title.replace(key, ReplaceChars[key])
